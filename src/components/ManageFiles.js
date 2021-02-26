@@ -365,15 +365,30 @@ class ManageFiles extends React.Component {
                               primary={item.id.replace(this.state.username+"/", "") }
                             />
                             <ListItemSecondaryAction className={classes.actionButtons}>
-                              <IconButton edge="end" aria-label="link" onClick={() => this.handleGetUrl(item.key_object)}>
-                                <LinkIcon />
-                              </IconButton>
-                              <IconButton edge="end" aria-label="download" onClick={() => this.handleDownloadObject(item.key_object)}>
-                                <CloudDownloadIcon />
-                              </IconButton>
-                              <IconButton edge="end" aria-label="delete" onClick={() => this.handleDeleteObject(item.id)}>
-                                <DeleteIcon />
-                              </IconButton>
+                              <Button
+                                size="small"
+                                className={classes.button}
+                                startIcon={<LinkIcon />}
+                                onClick={() => this.handleGetUrl(item.key_object)}
+                              >
+                                URL
+                              </Button>
+                              <Button
+                                size="small"
+                                className={classes.button}
+                                startIcon={<CloudDownloadIcon />}
+                                onClick={() => this.handleDownloadObject(item.key_object)}
+                              >
+                                Download
+                              </Button>
+                              <Button
+                                size="small"
+                                className={classes.button}
+                                startIcon={<DeleteIcon />}
+                                onClick={() => this.handleDeleteObject(item.id)}
+                              >
+                                Delete
+                              </Button>
                             </ListItemSecondaryAction>
                           </ListItem>
                           <Divider variant="inset" component="li" />
@@ -402,10 +417,10 @@ class ManageFiles extends React.Component {
           
           
           <Dialog open={this.state.open} onClose={this.handleDialogClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Get presigned URL: {this.state.keyObject.replace(this.state.username+"/", "")}</DialogTitle>
+            <DialogTitle id="form-dialog-title">Get presigned URL</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                Get a presigned URL of a stored file.
+                Get a presigned URL of your file {this.state.keyObject.replace(this.state.username+"/", "")}.
               </DialogContentText>
               <TextField
                 autoFocus
